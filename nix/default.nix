@@ -32,13 +32,13 @@ self: wallpapers: { pkgs, lib, config, ... }: let
   '';
 
   wallpaperScript = pkgs.writeShellApplication {
-    name = "wallpaper-switch";
+    name = "hypr-wallpaper-switch";
     runtimeInputs = [ pkgs.jq pkgs.hyprland awwwPackage ];
     text = transitionEnv + builtins.readFile ./wallpaper-switch.sh;
   };
 
   wallpaperInitScript = pkgs.writeShellApplication {
-    name = "wallpaper-init";
+    name = "hypr-wallpaper-init";
     runtimeInputs = [ pkgs.jq awwwPackage ];
     text = transitionEnv + builtins.readFile ./wallpaper-init.sh;
   };
@@ -275,10 +275,10 @@ in {
       })
       (mkIf cfg.wallpapers.enable {
         "${cfg.directory}/wallpaper-keys.conf".text = ''
-          bind = SUPER,       period, exec, ${wallpaperScript}/bin/wallpaper-switch next image
-          bind = SUPER,       comma,  exec, ${wallpaperScript}/bin/wallpaper-switch prev image
-          bind = SUPER ALT_L, period, exec, ${wallpaperScript}/bin/wallpaper-switch next folder
-          bind = SUPER ALT_L, comma,  exec, ${wallpaperScript}/bin/wallpaper-switch prev folder
+          bind = SUPER,       period, exec, ${wallpaperScript}/bin/hypr-wallpaper-switch next image
+          bind = SUPER,       comma,  exec, ${wallpaperScript}/bin/hypr-wallpaper-switch prev image
+          bind = SUPER ALT_L, period, exec, ${wallpaperScript}/bin/hypr-wallpaper-switch next folder
+          bind = SUPER ALT_L, comma,  exec, ${wallpaperScript}/bin/hypr-wallpaper-switch prev folder
         '';
       })
     ];
@@ -292,7 +292,7 @@ in {
       };
       Service = {
         Type = "oneshot";
-        ExecStart = "${wallpaperInitScript}/bin/wallpaper-init";
+        ExecStart = "${wallpaperInitScript}/bin/hypr-wallpaper-init";
       };
       Install = {
         WantedBy = [ "graphical-session.target" ];
