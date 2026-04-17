@@ -270,7 +270,7 @@ in {
         ".config/hypr/bindings.conf".source  = ../bindings.conf;
         ".config/hypr/hyprpaper.conf".source = ../hyprpaper.conf;
       })
-      (mkIf (cfg.setup != null) {
+      (mkIf (!cfg.cloneConfig && cfg.setup != null) {
         ".config/hypr/setup.conf".source = ../setups + "/${cfg.setup}.conf";
       })
       (mkIf cfg.wallpapers.enable {
@@ -322,6 +322,10 @@ in {
 
           ln -s ${dotsDir} ${xdgConfDir}
         fi
+
+        ${lib.optionalString (cfg.setup != null) ''
+          ln -sf ${dotsDir}/setups/${cfg.setup}.conf ${xdgConfDir}/setup.conf
+        ''}
 
         ssh-agent -k
       '');
