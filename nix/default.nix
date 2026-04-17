@@ -270,7 +270,7 @@ in {
         ".config/hypr/bindings.conf".source  = ../bindings.conf;
         ".config/hypr/hyprpaper.conf".source = ../hyprpaper.conf;
       })
-      (mkIf (!cfg.cloneConfig && cfg.setup != null) {
+      (mkIf (cfg.setup != null) {
         ".config/hypr/setup.conf".source = ../setups + "/${cfg.setup}.conf";
       })
       (mkIf cfg.wallpapers.enable {
