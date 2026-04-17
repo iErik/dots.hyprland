@@ -250,7 +250,7 @@ in {
       hyprpaper
       hyprpolkitagent
       hyprsome
-      rofi-wayland
+      rofi
       kitty
       grimblast
       pamixer
