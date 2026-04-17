@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774070915,
-        "narHash": "sha256-51WqcOmfdNmFI7U/zYn7L/prYmDyQz9XE9+LtPpHDl4=",
+        "lastModified": 1776391459,
+        "narHash": "sha256-zyCjLCV6ZrDVPnf57LFZMxgZLnq+k4F/l3j1roM7FXA=",
         "ref": "refs/heads/main",
-        "rev": "63b92a64c2638d7d2286f6648373ff311d3f5646",
-        "revCount": 20,
+        "rev": "ac6bf996bbb9829666b3311ab6044da591f05775",
+        "revCount": 21,
         "type": "git",
         "url": "ssh://git@github.com/iErik/Wallpapers"
       },
