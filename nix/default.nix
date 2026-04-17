@@ -283,9 +283,10 @@ in {
       })
     ];
 
-    systemd.user.services.wallpaper-init = mkIf cfg.wallpapers.enable {
+    systemd.user.services.hypr-wallpaper-init = mkIf cfg.wallpapers.enable {
       Unit = {
         Description = "Set a random wallpaper on session start";
+        ConditionEnvironment = "XDG_CURRENT_DESKTOP=Hyprland";
         After = [ "awww.service" "graphical-session.target" ];
         PartOf = [ "graphical-session.target" ];
       };
